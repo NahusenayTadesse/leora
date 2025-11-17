@@ -29,7 +29,7 @@
 			</div>
 
 			<!-- Right - Logo Visual -->
-			<div class="relative h-96 flex items-center justify-center">
+			<div class="relative h-96 hidden lg:flex  items-center justify-center">
 				<!-- Geometric logo pattern -->
 				<div class="relative w-80 h-80 flex items-center justify-center">
 					<!-- Outer ring -->
@@ -46,7 +46,7 @@
 
 					<!-- Inner geometric logo -->
 					<svg
-						class="w-48 h-48 text-primary drop-shadow-2xl"
+						class="w-48 h-4  text-primary drop-shadow-2xl"
 						viewBox="0 0 200 200"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"

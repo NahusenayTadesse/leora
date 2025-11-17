@@ -83,7 +83,7 @@ precise execution.
     </div>
 
     <!-- Right pin-wheel -->
-    <div class="relative h-96 flex items-center justify-center">
+    <div class="relative h-96 hidden lg:flex items-center justify-center">
       <div class="relative w-80 h-80 flex items-center justify-center">
         <div
           class="absolute inset-0 border-2 border-primary/20 rounded-full animate-spin"
