@@ -1,19 +1,18 @@
 <script lang="ts">
+	import './layout.css';
 	import '../app.css';
 	import Footer from '$lib/components/footer.svelte';
 	import Stars from '$lib/components/Stars.svelte';
 	import Spins from '$lib/components/Spins.svelte';
-  import Navigation from '$lib/components/navigation.svelte';
-  	import { page } from '$app/state';
+	import Navigation from '$lib/components/navigation.svelte';
+	import { page } from '$app/state';
 	import { getFlash } from 'sveltekit-flash-message';
-	 import { toastmsg, errormsg } from '$lib/global.svelte';
-	 	import { CircleCheckBig, CircleX, Loader } from '@lucide/svelte';
-  import { fly } from 'svelte/transition';
-		let iconify = $state("h-6 w-6 animate-ping");
-
-
-  const flash = getFlash(page, { clearAfterMs: 5000 });
+	import { toastmsg, errormsg } from '$lib/global.svelte';
+	import { CircleCheckBig, CircleX, Loader } from '@lucide/svelte';
+	import { fly } from 'svelte/transition';
 	
+	let iconify = $state("h-6 w-6 animate-ping");
+	const flash = getFlash(page, { clearAfterMs: 5000 });
 	let darkMode = $state(false);
 	
 	function toggleTheme() {

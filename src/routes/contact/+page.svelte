@@ -227,7 +227,7 @@
       <!-- Map placeholder -->
       <div class="rounded-2xl overflow-hidden border border-primary/10 h-64 bg-gray-100">
        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4720.374360736448!2d38.77998038360626!3d8.991524303768808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85a47172e483%3A0x1cab350ec519cb11!2sEthio%20IQ%20Tutors!5e0!3m2!1sen!2sus!4v1763022116612!5m2!1sen!2sus" 
-        class="w-full" style="border:0;" title="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        class="w-full h-full" style="border:0;" title="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>

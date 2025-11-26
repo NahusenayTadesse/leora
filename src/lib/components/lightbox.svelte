@@ -16,7 +16,7 @@
 		return () => window.removeEventListener('keydown', handleKeydown);
 	});
 
-	const currentImage = images[currentIndex];
+	const currentImage = $derived(images[currentIndex]);
 </script>
 
 <!-- Dark overlay with transition -->

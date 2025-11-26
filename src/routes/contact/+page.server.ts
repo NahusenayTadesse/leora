@@ -3,6 +3,8 @@ import { zod4 } from 'sveltekit-superforms/adapters';
 import { ContactFormSchema as schema } from './schema'
 import { setFlash } from 'sveltekit-flash-message/server';
 import type { Actions } from './$types';
+import { db } from '$lib/server/db';
+import { contactSubmissions } from '$lib/server/db/schema';
 
 // Define outside the load function so the adapter can be cached
 
@@ -24,7 +26,17 @@ export const actions: Actions = {
      if (!form.valid) {
       setFlash({ type: 'error', message: "Please check your form." }, cookies);
       return fail(400, { form });
-    }
+    }  
+
+       const { name, email, phone, company, service, message } = form.data;
+
+       await db.insert(contactSubmissions).values(
+         { 
+           fullName: name,
+           email,
+           phone, company, message, service
+         }
+       )
 
        setFlash({ type: 'success', message: "Message Sent succeful!" }, cookies);
 
