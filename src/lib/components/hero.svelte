@@ -1,6 +1,4 @@
-<script lang="ts">
-	import { onMount } from 'svelte';
-</script>
+
 
 <section class="relative py-20 md:py-32 overflow-hidden ">
 	<!-- Background gradient for visual depth -->

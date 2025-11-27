@@ -15,6 +15,13 @@
       "when": 1763549748506,
       "tag": "0001_aspiring_robin_chapel",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1764253274153,
+      "tag": "0002_illegal_penance",
+      "breakpoints": true
     }
   ]
 }

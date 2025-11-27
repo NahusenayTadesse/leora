@@ -33,6 +33,57 @@ export const contactSubmissions = mysqlTable('contact_submissions', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
 
+export const blogPost = mysqlTable("blog_post", {
+  id: varchar("id", { length: 255 }).primaryKey(),
+  slug: varchar("slug", { length: 200 }).notNull().unique(),
+  title: varchar("title", { length: 200 }).notNull(),
+  excerpt: varchar("excerpt", { length: 500 }),
+  content: text("content").notNull(),
+  authorId: varchar("author_id", { length: 255 }).references(() => user.id),
+  isPublished: int("is_published").notNull().default(0),
+  publishedAt: datetime("published_at"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const project = mysqlTable("project", {
+  id: varchar("id", { length: 255 }).primaryKey(),
+  category: int("category").notNull().references(() => projectCategory.id),
+  slug: varchar("slug", { length: 200 }).notNull().unique(),
+  title: varchar("title", { length: 200 }).notNull(),
+  shortDescription: varchar("short_description", { length: 400 }),
+  description: text("description").notNull(),
+  liveUrl: varchar("live_url", { length: 500 }),
+  featured: int("featured").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const projectCategory = mysqlTable("project_category", {
+  id: int("id").primaryKey().autoincrement(),
+  name: varchar("name", { length: 150 }).notNull().unique(),
+  description: varchar("description", { length: 500 }),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+
+
+export type ProjectCategory = typeof projectCategory.$inferSelect;
+
+export const projectGallery = mysqlTable("project_gallery", {
+  id: int("id").primaryKey().autoincrement(),
+  projectId: varchar("project_id", { length: 255 })
+    .notNull()
+    .references(() => project.id),
+  url: varchar("url", { length: 1000 }).notNull(),
+  altText: varchar("alt_text", { length: 255 }),
+  sortOrder: int("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export type BlogPost = typeof blogPost.$inferSelect;
+export type Project = typeof project.$inferSelect;
+export type ProjectGalleryItem = typeof projectGallery.$inferSelect;
 export type Session = typeof session.$inferSelect;
 
 export type User = typeof user.$inferSelect;
