@@ -1,77 +1,30 @@
 <script>
-    // GitHub Copilot
-    import { onMount } from "svelte";
 
-    // Example projects - replace with your real content/images/links
-    let projects = [
-        {
-            id: 1,
-            title: "Leora UI Library",
-            description: "A small, accessible component library used across the site with theming support.",
-            image: "/images/projects/leora-ui.jpg",
-            tags: ["svelte", "design", "components"],
-            href: "/projects/leora-ui",
-            repo: "https://github.com/nahus/leora-ui",
-            date: "2025-03-02"
-        },
-        {
-            id: 2,
-            title: "Portfolio Redesign",
-            description: "Full redesign and rebuild of the portfolio with attention to responsive layout and performance.",
-            image: "/images/projects/portfolio-redesign.jpg",
-            tags: ["sveltekit", "performance", "ux"],
-            href: "/projects/portfolio-redesign",
-            repo: "https://github.com/nahus/portfolio",
-            date: "2024-11-18"
-        },
-        {
-            id: 3,
-            title: "Analytics Dashboard",
-            description: "Interactive charts, filterable datasets and exportable reports for admins.",
-            image: "/images/projects/analytics.jpg",
-            tags: ["dashboard", "charts", "typescript"],
-            href: "/projects/analytics",
-            repo: "https://github.com/nahus/analytics",
-            date: "2024-07-10"
-        },
-        {
-            id: 4,
-            title: "E-commerce Prototype",
-            description: "A PWA-ready e-commerce prototype demonstrating checkout flows and offline cart.",
-            image: "/images/projects/ecommerce.jpg",
-            tags: ["pwa", "stripe", "svelte"],
-            href: "/projects/ecommerce",
-            repo: "https://github.com/nahus/ecommerce-proto",
-            date: "2023-12-01"
-        }
-    ];
+   let { data } = $props();
+   
 
-    let query = "";
-    let activeTag = "All";
-    let tags = ["All", ...Array.from(new Set(projects.flatMap(p => p.tags)))];
+    let query = $state('');
+    let activeTag = $state("All");
+    let tags = ["All", ...Array.from(new Set(data.projects.flatMap(p => p.category)))];
 
-    $: filtered = projects
-        .filter(p => activeTag === "All" || p.tags.includes(activeTag))
+    let filtered = $derived(data.projects
+        .filter(p => activeTag === "All" || p?.category.includes(activeTag))
         .filter(p => {
             const q = query.trim().toLowerCase();
             if (!q) return true;
             return (
                 p.title.toLowerCase().includes(q) ||
-                p.description.toLowerCase().includes(q) ||
-                p.tags.join(" ").toLowerCase().includes(q)
+                p?.shortDescription.toLowerCase().includes(q) ||
+                p?.category.join(" ").toLowerCase().includes(q)
             );
-        });
+        }));
 
-    // optional: lazy prefetch links
-    // onMount(() => {
-    //     const prefetchLinks = document.querySelectorAll("[data-prefetch]");
-    //     prefetchLinks.forEach(a => {
-    //         a.addEventListener("mouseover", () => {
-    //             if (a.href) fetch(a.href, { method: "GET", credentials: "same-origin" }).catch(() => {});
-    //         }, { once: true });
-    //     });
-    // });
+   
 </script>
+
+<svelte:head>
+    <title>Projects – Leora Digitals</title>
+</svelte:head>
 <div class="flex flex-col justify-self-center my-6 justify-center items-center w-full">
 
    
