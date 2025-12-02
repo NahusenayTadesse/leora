@@ -11,8 +11,8 @@
 			<!-- Left Content -->
 			<div class="space-y-8">
 				<h1 class="text-5xl md:text-6xl font-bold text-foreground leading-tight text-balance">
-					Elevate Your Brand with Impactful
-					<span class="text-primary">Marketing</span>
+					Elevate Your Brand with our
+					<span class="text-primary">Digital Solutions</span>
 				</h1>
 				<p class="text-lg text-foreground/90 leading-relaxed">
 					From digital campaigns to print-ready designs and video content. Leora Digitals is your
@@ -29,7 +29,7 @@
 			<!-- Right - Logo Visual -->
 			<div class="relative h-96 hidden lg:flex  items-center justify-center">
 				<!-- Geometric logo pattern -->
-				<div class="relative w-80 h-80 flex items-center justify-center">
+				<div class="relative w-lg h-lg flex items-center justify-center">
 					<!-- Outer ring -->
 					<div
 						class="absolute inset-0 border-2 border-primary/20 rounded-full animate-spin"
@@ -43,13 +43,13 @@
 					></div>
 
 					<!-- Inner geometric logo -->
-					<svg
+					<!-- <svg
 						class="w-48 h-4  text-primary drop-shadow-2xl"
 						viewBox="0 0 200 200"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
 					>
-						<!-- Geometric pinwheel design -->
+						 Geometric pinwheel design 
 						<g transform="translate(100, 100)">
 							{#each Array(8) as _, i}
 								<path
@@ -65,9 +65,9 @@
 								/>
 							{/each}
 						</g>
-					</svg>
+					</svg> -->
 
-	
+	          <img src="/images/HeroImage.webp" alt="Hero Illustration"  />
 					<div
 						class="absolute inset-0 bg-linear-to-br from-primary via-transparent to-accent rounded-full blur-3xl opacity-20 -z-10"
 					></div>

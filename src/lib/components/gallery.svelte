@@ -4,33 +4,88 @@
 	const images = [
 		{
 			id: 1,
-			src: '/placeholder.svg?height=400&width=400',
-			alt: 'Modern architecture'
+			src: '/images/gallery (1).webp',
+			alt: 'Gallery Image 1'
 		},
 		{
 			id: 2,
-			src: '/placeholder.svg?height=400&width=400',
-			alt: 'Minimalist interior'
+			src: '/images/gallery (2).webp',
+			alt: 'Gallery Image 2'
 		},
 		{
 			id: 3,
-			src: '/placeholder.svg?height=400&width=400',
-			alt: 'Urban landscape'
+			src: '/images/gallery (3).webp',
+			alt: 'Gallery Image 3'
 		},
 		{
 			id: 4,
-			src: '/placeholder.svg?height=400&width=400',
-			alt: 'Modern design'
+			src: '/images/gallery (4).webp',
+			alt: 'Gallery Image 4'
 		},
 		{
 			id: 5,
-			src: '/placeholder.svg?height=400&width=400',
-			alt: 'Contemporary art'
+			src: '/images/gallery (5).webp',
+			alt: 'Gallery Image 5'
 		},
 		{
 			id: 6,
-			src: '/placeholder.svg?height=400&width=400',
-			alt: 'Abstract pattern'
+			src: '/images/gallery (6).webp',
+			alt: 'Gallery Image 6'
+		},
+		{
+			id: 7,
+			src: '/images/gallery (7).webp',
+			alt: 'Gallery Image 7'
+		},
+		{
+			id: 8,
+			src: '/images/gallery (8).webp',
+			alt: 'Gallery Image 8'
+		},
+		{
+			id: 9,
+			src: '/images/gallery (9).webp',
+			alt: 'Gallery Image 9'
+		},
+		{
+			id: 10,
+			src: '/images/gallery (10).webp',
+			alt: 'Gallery Image 10'
+		},
+		{
+			id: 11,
+			src: '/images/gallery (11).webp',
+			alt: 'Gallery Image 11'
+		},
+		{
+			id: 12,
+			src: '/images/gallery (12).webp',
+			alt: 'Gallery Image 12'
+		},
+		{
+			id: 13,
+			src: '/images/gallery (13).webp',
+			alt: 'Gallery Image 13'
+		},
+		{
+			id: 14,
+			src: '/images/gallery (14).webp',
+			alt: 'Gallery Image 14'
+		},
+		{
+			id: 15,
+			src: '/images/gallery (15).webp',
+			alt: 'Gallery Image 15'
+		},
+		{
+			id: 16,
+			src: '/images/gallery (16).webp',
+			alt: 'Gallery Image 16'
+		},
+		{
+			id: 17,
+			src: '/images/gallery (17).webp',
+			alt: 'Gallery Image 17'
 		}
 	];
 
@@ -57,13 +112,20 @@
 		} else if (e.key === 'Escape') {
 			closeLightbox();
 		}
+	} 
+
+
+	function randomizeGallery() {
+	   const image =	images.sort(() => Math.random() - 0.5);
+
+	   return image;
 	}
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-	{#each images as image, index (image.id)}
+	{#each randomizeGallery() as image, index (image.id)}
 		<div
 			class="cursor-pointer group overflow-hidden rounded-lg bg-secondary"
 			onclick={() => openLightbox(index)}
@@ -82,7 +144,7 @@
 
 {#if isLightboxOpen && selectedIndex >= 0}
 	<Lightbox
-		images={images}
+		images={randomizeGallery()}
 		currentIndex={selectedIndex}
 		onClose={closeLightbox}
 		onNext={() => (selectedIndex = (selectedIndex + 1) % images.length)}

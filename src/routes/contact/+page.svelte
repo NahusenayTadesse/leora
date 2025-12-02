@@ -70,7 +70,7 @@
 
     <!-- Right pin-wheel -->
     <div class="relative h-96 lg:flex hidden items-center justify-center">
-      <div class="relative w-80 h-80 flex items-center justify-center">
+      <div class="relative w-lg h-lg flex items-center justify-center">
         <div
           class="absolute inset-0 border-2 border-primary/20 rounded-full animate-spin"
           style="animation-duration: 20s"
@@ -80,7 +80,7 @@
           style="animation-direction: reverse; animation-duration: 15s"
         ></div>
 
-        <svg
+        <!-- <svg
           class="w-48 h-48 text-primary drop-shadow-2xl"
           viewBox="0 0 200 200"
           fill="none"
@@ -102,8 +102,8 @@
               />
             {/each}
           </g>
-        </svg>
-
+        </svg> -->
+        <img src="/images/ContactImage.webp" alt="Contact Illustration"  />
         <div
           class="absolute inset-0 bg-linear-to-br from-primary via-transparent to-accent rounded-full blur-3xl opacity-20 -z-10"
         ></div>
