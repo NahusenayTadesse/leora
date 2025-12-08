@@ -20,7 +20,7 @@ export const actions: Actions = {
   default: async ({ request, cookies }) => { 
 
    const form = await superValidate(request, zod4(schema));
-    console.log(form);
+
 
 
      if (!form.valid) {

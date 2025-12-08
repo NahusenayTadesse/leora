@@ -59,7 +59,9 @@
 {/if}
 
 <div class="flex flex-col min-h-screen">
+{#if page.url.pathname !== '/dashboard'}
 <Navigation {toggleTheme} {darkMode} /> 
+{/if}
 	<main class="flex-1">
 		{@render children()}
 	</main>

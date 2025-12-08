@@ -1,7 +1,6 @@
 <script lang="ts">
   import { glass } from '$lib/global.svelte';
   import { Instagram, Linkedin, Loader } from '@lucide/svelte';
-  import { onMount } from 'svelte';
 
   /*-------- form state --------*/
 
@@ -10,17 +9,24 @@
 
   const budgets = ['Digital Marketing', 'Production', 'Printing'];
 
-  
+  import * as Select from "$lib/components/ui/select/index.js";
+
 
   import { superForm } from 'sveltekit-superforms';
   import { ContactFormSchema as schema } from './schema.js';
   import { zod4Client } from 'sveltekit-superforms/adapters';
+
 
   let { data } = $props();
 
   // Client API:
   const { form, errors, delayed, enhance, constraints } = superForm(data.form, 
      {validators: zod4Client(schema)}
+  );
+   let value = $state("");
+ 
+  const triggerContent = $derived(
+    budgets.find((f) => f === value) ?? "Select a service"
   );
 </script>
 
@@ -112,7 +118,7 @@
   </div>
 </section>
 
-{#snippet fe(labeler: "", name: '', type: '', placeholder: '', required: false )}
+{#snippet fe(labeler: '', name: '', type: '', placeholder: '', required: false )}
    <div class="flex flex-col gap-2  ">
         <div>
           <label for="name" class="block text-sm font-medium text-foreground mb-2">{labeler} {required ? '*': ''}</label>
@@ -157,17 +163,27 @@
 
       <div class="col-span-2">
         <label for="service" class="block text-sm font-medium text-foreground mb-2">What service are you looking for</label>
-        <select
-          id="budget"
-          name="budget"
-          bind:value={$form.service}
-          class="w-full rounded-lg border border-primary/20 bg-transparent px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/40"
+       <Select.Root type="single" name="service" bind:value>
+  <Select.Trigger  class="w-full rounded-lg border border-primary/20 bg-transparent px-4 py-3 
+            focus:outline-none focus:ring-2 focus:ring-primary/40
+            placeholder:text-foreground">
+    {triggerContent}
+  </Select.Trigger>
+  <Select.Content>
+    <Select.Group>
+      <Select.Label>Services</Select.Label>
+      {#each budgets as service }
+        <Select.Item
+          value={service}
+          label={service}
+          disabled={service === ""}
         >
-          <option value="" disabled selected>Select Service...</option>
-          {#each budgets as b}
-            <option value={b} class="text-foreground">{b}</option>
-          {/each}
-        </select>
+          {service}
+        </Select.Item>
+      {/each}
+    </Select.Group>
+  </Select.Content>
+</Select.Root>
       </div>
         {#if $errors.service}
            <p class="text-red-500">{$errors.service}</p>
