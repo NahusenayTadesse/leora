@@ -22,6 +22,13 @@
       "when": 1764253274153,
       "tag": "0002_illegal_penance",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1765784709604,
+      "tag": "0003_lonely_callisto",
+      "breakpoints": true
     }
   ]
 }

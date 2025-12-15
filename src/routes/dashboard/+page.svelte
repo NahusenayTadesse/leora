@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Toaster, toast } from "svelte-sonner";
-	import { SidebarInset, SidebarProvider } from "$lib/components/ui/sidebar";
+
 	import { Button } from "$lib/components/ui/button";
 	import AppSidebar from "$lib/components/app-sidebar.svelte";
 	import AppTopHeader from "$lib/components/app-top-header.svelte";
@@ -50,6 +49,10 @@
 	const handleAddProject = (project: Project) => {
 		projects = [...projects, project];
 	};
+     let { data } = $props();
+     import { superForm } from 'sveltekit-superforms';
+
+     const { form, delayed, enhance, allErrors, errors } = superForm(data.form);
 
 	const handleDeleteProject = (id: string) => {
 		const project = projects.find((p) => p.id === id);
@@ -64,15 +67,9 @@
     <title>Dashboard</title>
 </svelte:head>
 
-<Toaster position="bottom-right" richColors />
 
 <div class="bg-background text-foreground min-h-dvh">
-	<SidebarProvider>
-		<AppSidebar />
-		<SidebarInset>
-			<AppTopHeader />
 
-			<main class="flex-1 overflow-auto">
 				<div class="p-6 space-y-6">
 					<!-- Header Section -->
 					<div class="flex items-center justify-between">
@@ -80,7 +77,7 @@
 							<h2 class="text-2xl font-bold text-foreground">Your Projects</h2>
 							<p class="text-sm text-muted-foreground mt-1">Manage and track all your projects in one place</p>
 						</div>
-						<Button class="gap-2" onclick={() => (dialogOpen = true)}>
+						<Button class="gap-2" href="/dashboard/add-projects">
 							<PlusIcon class="size-4" />
 							<span>New Project</span>
 						</Button>
@@ -109,9 +106,5 @@
 						</div>
 					{/if}
 				</div>
-			</main>
-		</SidebarInset>
-	</SidebarProvider>
-</div>
 
-<AddProjectDialog bind:open={dialogOpen} onAdd={handleAddProject} />
+</div>

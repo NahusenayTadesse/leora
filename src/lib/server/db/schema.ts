@@ -4,7 +4,7 @@ import {
   varchar,
   datetime,
   text,
-  timestamp
+  timestamp,
 } from "drizzle-orm/mysql-core";
 
 export const user = mysqlTable("user", {
@@ -22,15 +22,15 @@ export const session = mysqlTable("session", {
   expiresAt: datetime("expires_at").notNull(),
 });
 
-export const contactSubmissions = mysqlTable('contact_submissions', {
-  id: int('id').primaryKey().autoincrement(), // cuid / uuid
-  fullName: varchar('full_name', { length: 120 }).notNull(),
-  email: varchar('email', { length: 255 }).notNull(),
-  phone: varchar('phone', { length: 30 }).notNull(),
-  company: varchar('company', { length: 180 }), // optional
-  service: varchar('service', { length: 120 }).notNull(), // “budget” in your <select>
-  message: text('message').notNull(),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
+export const contactSubmissions = mysqlTable("contact_submissions", {
+  id: int("id").primaryKey().autoincrement(), // cuid / uuid
+  fullName: varchar("full_name", { length: 120 }).notNull(),
+  email: varchar("email", { length: 255 }).notNull(),
+  phone: varchar("phone", { length: 30 }).notNull(),
+  company: varchar("company", { length: 180 }), // optional
+  service: varchar("service", { length: 120 }).notNull(), // “budget” in your <select>
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
 export const blogPost = mysqlTable("blog_post", {
@@ -48,12 +48,13 @@ export const blogPost = mysqlTable("blog_post", {
 
 export const project = mysqlTable("project", {
   id: varchar("id", { length: 255 }).primaryKey(),
-  category: int("category").notNull().references(() => projectCategory.id),
+  category: int("category")
+    .notNull()
+    .references(() => projectCategory.id),
   slug: varchar("slug", { length: 200 }).notNull().unique(),
   title: varchar("title", { length: 200 }).notNull(),
   shortDescription: varchar("short_description", { length: 400 }),
   description: text("description").notNull(),
-  liveUrl: varchar("live_url", { length: 500 }),
   featured: int("featured").notNull().default(0),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
@@ -65,8 +66,6 @@ export const projectCategory = mysqlTable("project_category", {
   description: varchar("description", { length: 500 }),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
-
-
 
 export type ProjectCategory = typeof projectCategory.$inferSelect;
 
