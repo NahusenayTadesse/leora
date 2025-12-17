@@ -36,7 +36,7 @@
 			{:else}
 				<img src={URL.createObjectURL($file[0])} class="h-64 w-64 rounded-md object-cover" alt="" />
 			{/if}
-			<Button variant="ghost" size="icon" onclick={() => file.set(undefined)}>
+			<Button variant="ghost" size="icon" type="button" onclick={() => file.set(undefined)}>
 				<X class="h-4 w-4" />
 			</Button>
 		</div>

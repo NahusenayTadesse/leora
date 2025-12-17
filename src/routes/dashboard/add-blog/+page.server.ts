@@ -72,7 +72,7 @@ export const actions: Actions = {
       delete form.data.featured;
 
       setFlash(
-        { type: "success", message: "Successfully Confirmed Appointment " },
+        { type: "success", message: "Blog Added Successfully" },
         cookies,
       );
       return {
@@ -97,14 +97,14 @@ export const actions: Actions = {
         setFlash(
           {
             type: "error",
-            message: `There is no appointment with the provided ID.`,
+            message: `There is no blog with the provided ID.`,
           },
           cookies,
         );
         return fail(400);
       }
 
-      await db.delete(appointments).where(eq(appointments.id, id));
+      await db.delete(blogPost).where(eq(blogPost.id, id));
 
       setFlash(
         { type: "success", message: "Appointment Deleted Successfully!" },

@@ -1,6 +1,45 @@
 <script lang="ts">
 	import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "$lib/components/ui/sidebar";
-	import { BadgeQuestionMark, LayoutDashboardIcon, SettingsIcon } from "@lucide/svelte";
+	import { BadgeQuestionMark, Book, BookPlus, FilePlus, LayoutDashboard, SettingsIcon } from "@lucide/svelte";
+
+	let menu = [
+		{
+			id: "dashboard",
+			label: "Dashboard",
+			icon: LayoutDashboard,
+			isActive: true,
+		},
+		{
+			id: "projects",
+			label: "Projects",
+			icon: Book,
+			isActive: false,
+		},
+		{
+			id: "add-project",
+			label: "Add Projects",
+			icon: FilePlus,
+			isActive: false,
+		},
+		{
+			id: "add-blog",
+			label: "Add Blogs",
+			icon: BookPlus,
+			isActive: false,
+		},
+		{
+			id: "settings",
+			label: "Settings",
+			icon: SettingsIcon,
+			isActive: false,
+		},
+		{
+			id: "documentation",
+			label: "Documentation",
+			icon: BadgeQuestionMark,
+			isActive: false,
+		},
+	];
 </script>
 
 <Sidebar collapsible="offcanvas">
@@ -18,18 +57,17 @@
 			<SidebarGroupLabel>Menu</SidebarGroupLabel>
 			<SidebarGroupContent>
 				<SidebarMenu>
-					<SidebarMenuItem>
-						<SidebarMenuButton isActive={true}>
-							<LayoutDashboardIcon class="size-4" />
-							<span>Dashboard</span>
+				 {#each menu as item}
+					<a href="/dashboard/{item.id}">
+					<SidebarMenuItem >
+
+						<SidebarMenuButton isActive={true} >
+							<item.icon class="size-4" />
+							<span>{item.label}</span>
 						</SidebarMenuButton>
 					</SidebarMenuItem>
-					<SidebarMenuItem>
-						<SidebarMenuButton>
-							<SettingsIcon class="size-4" />
-							<span>Settings</span>
-						</SidebarMenuButton>
-					</SidebarMenuItem>
+					</a>
+					{/each}
 				</SidebarMenu>
 			</SidebarGroupContent>
 		</SidebarGroup>

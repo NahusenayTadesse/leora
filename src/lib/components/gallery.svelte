@@ -2,27 +2,26 @@
   import Lightbox from './lightbox.svelte';
 
   /* 1.  each image has thumb + full -------------------------------------- */
-  const images = [
-    { id: 1,  thumb: '/images/gallery (1)-thumb.webp',  full: '/images/gallery (1).webp',  alt: 'Gallery Image 1'  },
-    { id: 2,  thumb: '/images/gallery (2)-thumb.webp',  full: '/images/gallery (2).webp',  alt: 'Gallery Image 2'  },
-    { id: 3,  thumb: '/images/gallery (3)-thumb.webp',  full: '/images/gallery (3).webp',  alt: 'Gallery Image 3'  },
-    { id: 4,  thumb: '/images/gallery (4)-thumb.webp',  full: '/images/gallery (4).webp',  alt: 'Gallery Image 4'  },
-    { id: 5,  thumb: '/images/gallery (5)-thumb.webp',  full: '/images/gallery (5).webp',  alt: 'Gallery Image 5'  },
-    { id: 6,  thumb: '/images/gallery (6)-thumb.webp',  full: '/images/gallery (6).webp',  alt: 'Gallery Image 6'  },
-    { id: 7,  thumb: '/images/gallery (7)-thumb.webp',  full: '/images/gallery (7).webp',  alt: 'Gallery Image 7'  },
-    { id: 8,  thumb: '/images/gallery (8)-thumb.webp',  full: '/images/gallery (8).webp',  alt: 'Gallery Image 8'  },
-    { id: 9,  thumb: '/images/gallery (9)-thumb.webp',  full: '/images/gallery (9).webp',  alt: 'Gallery Image 9'  },
-    { id: 10, thumb: '/images/gallery (10)-thumb.webp', full: '/images/gallery (10).webp', alt: 'Gallery Image 10' },
-    { id: 11, thumb: '/images/gallery (11)-thumb.webp', full: '/images/gallery (11).webp', alt: 'Gallery Image 11' },
-    { id: 12, thumb: '/images/gallery (12)-thumb.webp', full: '/images/gallery (12).webp', alt: 'Gallery Image 12' },
-    { id: 13, thumb: '/images/gallery (13)-thumb.webp', full: '/images/gallery (13).webp', alt: 'Gallery Image 13' },
-    { id: 14, thumb: '/images/gallery (14)-thumb.webp', full: '/images/gallery (14).webp', alt: 'Gallery Image 14' },
-    { id: 15, thumb: '/images/gallery (15)-thumb.webp', full: '/images/gallery (15).webp', alt: 'Gallery Image 15' },
-    { id: 16, thumb: '/images/gallery (16)-thumb.webp', full: '/images/gallery (16).webp', alt: 'Gallery Image 16' },
-    { id: 17, thumb: '/images/gallery (17)-thumb.webp', full: '/images/gallery (17).webp', alt: 'Gallery Image 17' },
-  ];
 
-  /* 2.  shuffle once – keep result reactive ------------------------------ */
+let { images=[
+  { id: 1,  thumb: '/images/gallery (1)-thumb.webp',  full: '/images/gallery (1).webp',  alt: 'Gallery Image 1'  },
+  { id: 2,  thumb: '/images/gallery (2)-thumb.webp',  full: '/images/gallery (2).webp',  alt: 'Gallery Image 2'  },
+  { id: 3,  thumb: '/images/gallery (3)-thumb.webp',  full: '/images/gallery (3).webp',  alt: 'Gallery Image 3'  },
+  { id: 4,  thumb: '/images/gallery (4)-thumb.webp',  full: '/images/gallery (4).webp',  alt: 'Gallery Image 4'  },
+  { id: 5,  thumb: '/images/gallery (5)-thumb.webp',  full: '/images/gallery (5).webp',  alt: 'Gallery Image 5'  },
+  { id: 6,  thumb: '/images/gallery (6)-thumb.webp',  full: '/images/gallery (6).webp',  alt: 'Gallery Image 6'  },
+  { id: 7,  thumb: '/images/gallery (7)-thumb.webp',  full: '/images/gallery (7).webp',  alt: 'Gallery Image 7'  },
+  { id: 8,  thumb: '/images/gallery (8)-thumb.webp',  full: '/images/gallery (8).webp',  alt: 'Gallery Image 8'  },
+  { id: 9,  thumb: '/images/gallery (9)-thumb.webp',  full: '/images/gallery (9).webp',  alt: 'Gallery Image 9'  },
+  { id: 10, thumb: '/images/gallery (10)-thumb.webp', full: '/images/gallery (10).webp', alt: 'Gallery Image 10' },
+  { id: 11, thumb: '/images/gallery (11)-thumb.webp', full: '/images/gallery (11).webp', alt: 'Gallery Image 11' },
+  { id: 12, thumb: '/images/gallery (12)-thumb.webp', full: '/images/gallery (12).webp', alt: 'Gallery Image 12' },
+  { id: 13, thumb: '/images/gallery (13)-thumb.webp', full: '/images/gallery (13).webp', alt: 'Gallery Image 13' },
+  { id: 14, thumb: '/images/gallery (14)-thumb.webp', full: '/images/gallery (14).webp', alt: 'Gallery Image 14' },
+  { id: 15, thumb: '/images/gallery (15)-thumb.webp', full: '/images/gallery (15).webp', alt: 'Gallery Image 15' },
+  { id: 16, thumb: '/images/gallery (16)-thumb.webp', full: '/images/gallery (16).webp', alt: 'Gallery Image 16' },
+  { id: 17, thumb: '/images/gallery (17)-thumb.webp', full: '/images/gallery (17).webp', alt: 'Gallery Image 17' },
+] } = $props();  /* 2.  shuffle once – keep result reactive ------------------------------ */
   let gallery = $state(shuffle([...images]));
 
   function shuffle<T>(arr: T[]): T[] {

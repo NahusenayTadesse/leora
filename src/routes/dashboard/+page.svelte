@@ -77,10 +77,16 @@
 							<h2 class="text-2xl font-bold text-foreground">Your Projects</h2>
 							<p class="text-sm text-muted-foreground mt-1">Manage and track all your projects in one place</p>
 						</div>
-						<Button class="gap-2" href="/dashboard/add-projects">
+						<div class="flex items-center space-x-2">
+						<Button class="gap-2" href="/dashboard/add-blog">
+							<PlusIcon class="size-4" />
+							<span>New Blog</span>
+						</Button>
+						<Button class="gap-2" href="/dashboard/add-project">
 							<PlusIcon class="size-4" />
 							<span>New Project</span>
 						</Button>
+						</div>
 					</div>
 
 					<!-- Projects Grid -->

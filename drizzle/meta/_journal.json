@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1763542349573,
-      "tag": "0000_sturdy_jackal",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1763549748506,
-      "tag": "0001_aspiring_robin_chapel",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1764253274153,
-      "tag": "0002_illegal_penance",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1765784709604,
-      "tag": "0003_lonely_callisto",
+      "when": 1765968022444,
+      "tag": "0000_massive_falcon",
       "breakpoints": true
     }
   ]

@@ -86,7 +86,7 @@
 			{#each images as image, index (image.id)}
 				<button
 					onclick={() => (currentIndex = index)}
-					class="flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all {currentIndex ===
+					class="shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all {currentIndex ===
 					index
 						? 'border-primary'
 						: 'border-transparent opacity-60 hover:opacity-100'}"

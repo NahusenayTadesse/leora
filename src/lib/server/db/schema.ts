@@ -34,7 +34,7 @@ export const contactSubmissions = mysqlTable("contact_submissions", {
 });
 
 export const blogPost = mysqlTable("blog_post", {
-  id: varchar("id", { length: 255 }).primaryKey(),
+  id: int("id").primaryKey().autoincrement(),
   slug: varchar("slug", { length: 200 }).notNull().unique(),
   title: varchar("title", { length: 200 }).notNull(),
   excerpt: varchar("excerpt", { length: 500 }),
@@ -47,7 +47,7 @@ export const blogPost = mysqlTable("blog_post", {
 });
 
 export const project = mysqlTable("project", {
-  id: varchar("id", { length: 255 }).primaryKey(),
+  id: int("id").primaryKey().autoincrement(),
   category: int("category")
     .notNull()
     .references(() => projectCategory.id),
@@ -55,7 +55,7 @@ export const project = mysqlTable("project", {
   title: varchar("title", { length: 200 }).notNull(),
   shortDescription: varchar("short_description", { length: 400 }),
   description: text("description").notNull(),
-  featured: int("featured").notNull().default(0),
+  featured: varchar("featured", { length: 255 }).notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
@@ -71,7 +71,7 @@ export type ProjectCategory = typeof projectCategory.$inferSelect;
 
 export const projectGallery = mysqlTable("project_gallery", {
   id: int("id").primaryKey().autoincrement(),
-  projectId: varchar("project_id", { length: 255 })
+  projectId: int("project_id")
     .notNull()
     .references(() => project.id),
   url: varchar("url", { length: 1000 }).notNull(),
