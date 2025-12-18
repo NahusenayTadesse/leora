@@ -1,14 +1,13 @@
 <script lang="ts">
   import { page } from '$app/state';
  import { Sun, Moon, TextAlignJustify, X } from '@lucide/svelte'
-
+import { toggleMode } from "mode-watcher";
 
 	interface Props {
 		toggleTheme: () => void;
 		darkMode: boolean;
 	}
 
-	let { toggleTheme, darkMode } = $props() as Props;
 	let mobileMenuOpen = $state(false);
 
 	const navLinks = [
@@ -17,7 +16,7 @@
 		{ label: 'Projects', href: '/projects' },
 		{ label: 'Gallery', href: '/gallery' },
 		{ label: 'Contact', href: '/contact' },
-		
+
 	];
 
 
@@ -45,15 +44,15 @@
 			<!-- Theme Toggle & Mobile Menu Button -->
 			<div class="flex gap-4 items-center">
 				<button
-					onclick={toggleTheme}
+				onclick={toggleMode}
 					class="p-2 rounded-lg bg-muted hover:bg-secondary transition-colors"
 					aria-label="Toggle theme"
 				>
-					{#if darkMode}
-						<Sun />
-					{:else}
-						<Moon />
-					{/if}
+
+						<Sun class="dark:hidden block" />
+
+						<Moon class="hidden dark:block" />
+
 				</button>
 
 				<!-- Mobile Menu Button -->

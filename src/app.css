@@ -91,8 +91,8 @@
 }
 
 ::selection {
-   background: var(--color-primary);
-   color: white;
+  background: var(--color-primary);
+  color: white;
 }
 
 @layer base {
@@ -100,6 +100,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-linear-to-br from-primary/10 to-white  text-foreground;
+    @apply bg-linear-to-br from-primary/10 to-white text-foreground dark:bg-transparent dark:text-white;
   }
 }

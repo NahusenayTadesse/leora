@@ -2,7 +2,6 @@
 	import { SidebarInset, SidebarProvider } from "$lib/components/ui/sidebar";
 	import AppSidebar from "$lib/components/app-sidebar.svelte";
 	import AppTopHeader from "$lib/components/app-top-header.svelte";
-	import type { Project } from "$lib/types.js";
 
 
 
