@@ -91,7 +91,7 @@
 
 					<!-- Projects Grid -->
 					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-						{#each projects as project (project.id)}
+						{#each data.projects as project (project.id)}
 							<div class="animate-in fade-in slide-in-from-bottom-2 duration-300">
 								<ProjectCard {project} onDelete={handleDeleteProject} />
 							</div>

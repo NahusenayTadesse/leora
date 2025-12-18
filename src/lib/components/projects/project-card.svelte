@@ -17,24 +17,26 @@
 	<CardHeader class="pb-3">
 		<div class="flex items-start justify-between gap-2">
 			<div class="flex-1 min-w-0">
-				<CardTitle class="text-base truncate">{project.name}</CardTitle>
-				<CardDescription class="line-clamp-2 mt-1">{project.description}</CardDescription>
+				<CardTitle class="text-base truncate">{project.title}</CardTitle>
+				<CardDescription class="line-clamp-2 mt-1">{@html project.description}</CardDescription>
 			</div>
 			<div class="size-10 rounded-lg bg-linear-to-br from-primary/20 to-primary/10 flex items-center justify-center shrink-0">
-				<span class="text-xs font-bold text-primary">{project.name.charAt(0).toUpperCase()}</span>
+
+				<span class="text-xs font-bold text-primary">{project.title.charAt(0).toUpperCase()}</span>
 			</div>
 		</div>
 	</CardHeader>
 
 	<CardContent class="flex-1 pb-3">
 		<div class="flex flex-wrap gap-2">
-			<Badge variant="secondary" class="text-xs">{project.status}</Badge>
-			<Badge variant="outline" class="text-xs">{project.team} team</Badge>
+		<Badge variant="secondary" class="text-xs">{project.category}</Badge>
+			<Badge variant="secondary" class="text-xs">{project.createdAt.toLocaleDateString()}</Badge>
 		</div>
+		<img src="/files/{project.featured}" alt="">
 	</CardContent>
 
 	<CardFooter class="flex gap-2 pt-3 border-t">
-		<Button size="sm" variant="outline" class="flex-1 h-8">
+		<Button size="sm" variant="outline" class="flex-1 h-8" href="/projects/{project.slug}" target="_blank">
 			<ExternalLinkIcon class="size-4" />
 			<span>View</span>
 		</Button>

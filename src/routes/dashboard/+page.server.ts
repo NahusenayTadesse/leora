@@ -14,13 +14,28 @@ if (!fs.existsSync(FILES_DIR)) {
 
 import { db } from "$lib/server/db";
 import { eq, and, sql } from "drizzle-orm";
+import { project, projectCategory } from "$lib/server/db/schema";
 import type { Actions, PageServerLoad } from "./$types";
 import { fail } from "sveltekit-superforms";
 import { setFlash } from "sveltekit-flash-message/server";
 
 export const load: PageServerLoad = async () => {
   const form = await superValidate(zod4(schema));
+  const projects = await db
+    .select({
+      id: project.id,
+      title: project.title,
+      slug: project.slug,
+      featured: project.featured,
+      description: project.description,
+      categories: projectCategory.name,
+      createdAt: project.createdAt,
+    })
+    .from(project)
+    .leftJoin(projectCategory, eq(project.category, projectCategory.id));
+
   return {
+    projects,
     form,
   };
 };
