@@ -3,6 +3,7 @@
 	import { Input } from '$lib/components/ui/input/index';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { X } from '@lucide/svelte';
+    import { fade } from 'svelte/transition';
 	import { fileProxy } from 'sveltekit-superforms/client';
 
 	let { form, name, errors, title = 'Upload Image' } = $props();
@@ -34,9 +35,9 @@
 					title="pdf"
 				></iframe>
 			{:else}
-				<img src={URL.createObjectURL($file[0])} class="h-64 w-64 rounded-md object-cover" alt="" />
+				<img src={URL.createObjectURL($file[0])} class="h-64 w-64 rounded-md object-cover" alt={$file?.item(0)?.name} transition:fade={{ duration: 300 }} />
 			{/if}
-			<Button variant="ghost" size="icon" type="button" onclick={() => file.set(undefined)}>
+			<Button variant="destructive" size="icon" type="button" onclick={() => file.set(undefined)}>
 				<X class="h-4 w-4" />
 			</Button>
 		</div>

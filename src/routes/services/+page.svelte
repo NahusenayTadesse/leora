@@ -1,6 +1,8 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
 
+ import ServicesDetails from '$lib/components/ServicesDetails.svelte';
+
   /*-------- data --------*/
   const services = [
     {
@@ -183,6 +185,8 @@
     </div>
   </div>
 </section>
+
+<ServicesDetails />
 
 <!-- 4. FAQ -->
 <section class="py-20 md:py-24 px-4">

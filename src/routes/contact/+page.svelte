@@ -20,11 +20,11 @@
   let { data } = $props();
 
   // Client API:
-  const { form, errors, delayed, enhance, constraints } = superForm(data.form, 
+  const { form, errors, delayed, enhance, constraints } = superForm(data.form,
      {validators: zod4Client(schema)}
   );
    let value = $state("");
- 
+
   const triggerContent = $derived(
     budgets.find((f) => f === value) ?? "Select a service"
   );
@@ -54,7 +54,7 @@
 
       <!-- socials -->
       <div class="flex items-center gap-4">
-       
+
         <a
           href="https://linkedin.com/company/leoradigitals"
           target="_blank"
@@ -130,41 +130,41 @@
             {name}
             bind:value={$form[name]}
             {...$constraints[name]}
-            class="w-full rounded-lg border border-primary/20 bg-transparent px-4 py-3 
+            class="w-full rounded-lg border border-primary/20 bg-transparent px-4 py-3
             focus:outline-none focus:ring-2 focus:ring-primary/40
             placeholder:text-foreground"
           />
         </div>
       {#if $errors[name]}
          <p class="text-red-500">{$errors[name]}</p>
-        
+
       {/if}
     </div>
 {/snippet}
 
 <!-- 2. FORM + DETAILS -->
-<section class="py-20 w-full  md:py-24 px-4">
+<section id="contact" class="py-20 w-full  md:py-24 px-4">
   <div class="mx-auto grid md:grid-cols-5 gap-12 lg:px-56 px-0">
     <!-- Left form -->
     <form
-      use:enhance 
+      use:enhance
       method="post"
       class="md:col-span-3 {glass} rounded-lg p-4 space-y-6"
-    > 
+    >
     <h2 class="text-center text-4xl lg:text-6xl font-bold mb-6">Get In Touch</h2>
       <div class="grid sm:grid-cols-2 gap-6">
         {@render fe('Full Name', 'name', 'text', 'Enter Your Full Name', true)}
         {@render fe('Email', 'email', 'email', 'Enter Your Email', true )}
         {@render fe('Phone', 'phone', 'tel', '+251 911 010203', true )}
         {@render fe('Company', 'company', 'text', 'Enter Your Company', false )}
-        
 
-      
+
+
 
       <div class="col-span-2">
         <label for="service" class="block text-sm font-medium text-foreground mb-2">What service are you looking for</label>
        <Select.Root type="single" name="service" bind:value>
-  <Select.Trigger  class="w-full rounded-lg border border-primary/20 bg-transparent px-4 py-3 
+  <Select.Trigger  class="w-full rounded-lg border border-primary/20 bg-transparent px-4 py-3
             focus:outline-none focus:ring-2 focus:ring-primary/40
             placeholder:text-foreground">
     {triggerContent}
@@ -209,16 +209,16 @@
         type="submit"
         disabled={$delayed}
         class="inline-flex flex-row gap-2 justify-center items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:scale-105 disabled:opacity-60"
-      > 
+      >
          {#if $delayed}
            <Loader class="animate-spin" />
          {/if}
 
         {$delayed ? 'Sending…' : 'Send message'}
       </button>
-  
+
        </div>
-     
+
     </form>
 
     <!-- Right details -->
@@ -242,7 +242,7 @@
 
       <!-- Map placeholder -->
       <div class="rounded-2xl overflow-hidden border border-primary/10 h-64 bg-gray-100">
-       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4720.374360736448!2d38.77998038360626!3d8.991524303768808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85a47172e483%3A0x1cab350ec519cb11!2sEthio%20IQ%20Tutors!5e0!3m2!1sen!2sus!4v1763022116612!5m2!1sen!2sus" 
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4720.374360736448!2d38.77998038360626!3d8.991524303768808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85a47172e483%3A0x1cab350ec519cb11!2sEthio%20IQ%20Tutors!5e0!3m2!1sen!2sus!4v1763022116612!5m2!1sen!2sus"
         class="w-full h-full" style="border:0;" title="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>

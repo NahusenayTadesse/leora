@@ -54,13 +54,13 @@
 
      const { form, delayed, enhance, allErrors, errors } = superForm(data.form);
 
-	const handleDeleteProject = (id: string) => {
-		const project = projects.find((p) => p.id === id);
-		projects = projects.filter((p) => p.id !== id);
-		if (project) {
-			toast.success(`Project "${project.name}" deleted`);
-		}
-	};
+	// const handleDeleteProject = (id: string) => {
+	// 	const project = projects.find((p) => p.id === id);
+	// 	projects = projects.filter((p) => p.id !== id);
+	// 	if (project) {
+	// 		toast.success(`Project "${project.name}" deleted`);
+	// 	}
+	// };
 </script>
 
 <svelte:head>
@@ -93,7 +93,7 @@
 					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 						{#each data.projects as project (project.id)}
 							<div class="animate-in fade-in slide-in-from-bottom-2 duration-300">
-								<ProjectCard {project} onDelete={handleDeleteProject} />
+								<ProjectCard {project}  />
 							</div>
 						{/each}
 					</div>

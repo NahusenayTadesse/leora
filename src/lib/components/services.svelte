@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
   import { glass } from "$lib/global.svelte";
   import { Smartphone, Clapperboard, Printer, Icon} from '@lucide/svelte'
 
@@ -53,13 +54,10 @@
 		<!-- Services Grid -->
 		<div class="grid md:grid-cols-3 gap-8">
 			{#each services as service (service.id)}
-				<div
-					class="group relative p-8 rounded-xl bg-card border border-border 
+				<button
+					class="group relative p-8 rounded-xl bg-card border border-border
 					hover:border-primary/50 shadow-lg shadow-white transition-all duration-300 cursor-pointer hover:shadow-lg {glass}"
-					onmouseenter={() => (hoveredService = service.id)}
-					onmouseleave={() => (hoveredService = null)}
-					role="button"
-					tabindex="0"
+					onclick={() => goto(`/services/#${service.id}`)}
 				>
 					<!-- Card background accent -->
 					<div
@@ -75,7 +73,7 @@
 
 					<!-- Link -->
 					<div class="flex items-center gap-2 text-primary font-semibold">
-						<span>See More</span>
+						<a href="/services/#{service.id}">See More</a>
 						<svg
 							class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
 							fill="none"
@@ -85,7 +83,7 @@
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 						</svg>
 					</div>
-				</div>
+				</button>
 			{/each}
 		</div>
 	</div>

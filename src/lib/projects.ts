@@ -25,16 +25,14 @@ export const ProjectSchema = z.object({
       "Please upload a valid image (JPG, PNG, WebP, HEIC/HEIF).",
     ),
   gallery: z
-    .array(
-      z
-        .instanceof(File, { message: "A file is required." })
-        .refine((file) => file.size > 0, "File cannot be empty.")
-        .refine((file) => file.size <= MAX_FILE_SIZE, "Max file size is 10MB.")
-        .refine(
-          (file) => ACCEPTED_FILE_TYPES.includes(file.type),
-          "Please upload a valid image (JPG, PNG, WebP, HEIC/HEIF).",
-        ),
+    .instanceof(File, { message: "A file is required." })
+    .refine((file) => file.size > 0, "File cannot be empty.")
+    .refine((file) => file.size <= 100 * 1024 * 1024, "Max file size is 10MB.")
+    .refine(
+      (file) => ACCEPTED_FILE_TYPES.includes(file.type),
+      "Please upload a valid image (JPG, PNG, WebP, HEIC/HEIF).",
     )
+    .array()
     .min(1, "At least one image is required.")
     .max(10, "You can upload up to 10 images."),
 });

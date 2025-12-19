@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "$lib/components/ui/card";
+	import {  Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "$lib/components/ui/card";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
-	import {  ExternalLinkIcon, TrashIcon } from "@lucide/svelte";
+	import { Pen, ExternalLinkIcon, TrashIcon } from "@lucide/svelte";
 	import type { Project } from "$lib/types.js";
 
-	const { project, onDelete }: Props = $props();
+	const { project }: Props = $props();
 
 	type Props = {
 		project: Project;
@@ -40,7 +40,11 @@
 			<ExternalLinkIcon class="size-4" />
 			<span>View</span>
 		</Button>
-		<Button size="sm" variant="ghost" class="h-8 px-2" onclick={() => onDelete?.(project.id)}>
+		<Button size="sm" variant="outline" class="flex-1 h-8" href="/dashboard/edit-project/{project.slug}" target="_blank">
+			<Pen class="size-4" />
+			<span>Edit</span>
+		</Button>
+		<Button size="sm" variant="ghost" class="h-8 px-2" >
 			<TrashIcon class="size-4 text-destructive" />
 		</Button>
 	</CardFooter>
